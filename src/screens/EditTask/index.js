@@ -7,11 +7,12 @@ import {
   View,
   TouchableWithoutFeedback,
   Keyboard,
+  TouchableOpacity,
 } from "react-native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { Appbar, useTheme } from "react-native-paper";
+import { Appbar, useTheme, Checkbox } from "react-native-paper";
 
 import { AnimatedModal, CircleButton, CustomTextInput } from "../../components";
 import { styles as s } from "./styles";
@@ -21,11 +22,12 @@ export const EditTask = () => {
 
   const navigation = useNavigation();
   const route = useRoute();
-  const { colors } = useTheme();
+  const { colors, fontSize } = useTheme();
 
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [task, setTask] = useState({});
+  const [check, setCheck] = useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const resetInputs = () => {
@@ -64,6 +66,7 @@ export const EditTask = () => {
       ...task,
       title,
       desc,
+      isChecked: check,
     };
 
     try {
@@ -89,10 +92,13 @@ export const EditTask = () => {
   };
 
   useEffect(() => {
+    console.log("route.params?.selectedTask.isChecked =======================");
+    console.log(route.params?.selectedTask.isChecked);
     if (route.params?.selectedTask) {
       setTask(route.params?.selectedTask);
       setTitle(route.params?.selectedTask.title);
       setDesc(route.params?.selectedTask.desc);
+      setCheck(route.params?.selectedTask.isChecked);
     }
   }, [route.params]);
 
@@ -121,19 +127,29 @@ export const EditTask = () => {
             label="Titulo"
             value={title}
             onChangeText={(txt) => setTitle(txt)}
-            style={{ fontSize: 20 }}
+            style={{ fontSize: fontSize.big }}
             maxLength={50}
           />
-
           <CustomTextInput
             label="Descricao"
             value={desc}
             onChangeText={(txt) => setDesc(txt)}
-            style={{ fontSize: 14 }}
+            style={{ fontSize: fontSize.medium }}
             multiline={true}
           />
 
-          <Text>Data e hora de conclusao</Text>
+          {/* ============================== */}
+          <View style={s.checkboxContainer}>
+            <Checkbox
+              status={check ? "checked" : "unchecked"}
+              onPress={() => setCheck(!check)}
+              uncheckedColor={colors.red}
+              color={colors.orange}
+            />
+
+            <Text style={s.checkboxText}>Tarefa completada?</Text>
+          </View>
+          {/* ============================== */}
         </View>
 
         <CircleButton icon="check" onPress={() => handleEditTask(task)} />

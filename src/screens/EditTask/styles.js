@@ -14,18 +14,14 @@ export const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
   },
-  title: {
-    marginBottom: 10,
-    fontSize: 14,
-    fontWeight: "600",
-    color: theme.colors.blue,
-  },
-  textinput: {
-    marginBottom: 20,
+  checkboxContainer: {
     width: "100%",
-    paddingVertical: 10,
-    borderBottomWidth: 2,
-    borderBottomColor: theme.colors.grey300,
-    color: theme.colors.grey600,
+    
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+},
+  checkboxText: {
+    color: theme.colors.black,
   },
 });
