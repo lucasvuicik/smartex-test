@@ -158,7 +158,7 @@ export const TasksList = () => {
                     style={{
                       width: "100%",
                       marginLeft: 20,
-                      backgroundColor: "pink",
+                      //   backgroundColor: "pink",
                     }}
                   >
                     <Text style={{ fontWeight: "bold" }}>{item?.title}</Text>
@@ -168,15 +168,6 @@ export const TasksList = () => {
                 </View>
               </TouchableOpacity>
             )}
-            // renderItem={({ item }) => (
-            //   <Row
-            //     item={item}
-            //     title={item.title}
-            //     desc={item.desc}
-            //     date={item.date}
-            //     time={item.time}
-            //   />
-            // )}
           />
         ) : (
           <Text>Voce nao possui registros</Text>

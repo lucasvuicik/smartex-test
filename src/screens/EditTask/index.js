@@ -7,6 +7,7 @@ import { Appbar } from "react-native-paper";
 
 import { CircleButton } from "../../components";
 import { colors } from "../../global/styles/theme";
+import { AnimatedCheckModal } from "../../components/AnimatedModal";
 
 export const EditTask = () => {
   const dataKey = "@smartex-test-app:tasks";
@@ -16,8 +17,8 @@ export const EditTask = () => {
 
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-
   const [task, setTask] = useState({});
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const resetInputs = () => {
     setTitle("");
@@ -30,8 +31,6 @@ export const EditTask = () => {
       const currentData = data ? JSON.parse(data) : [];
 
       const newData = currentData.filter((item) => item.id !== task.id);
-      console.log("newData ===============");
-      console.log(newData);
 
       if (!newData.length) {
         await AsyncStorage.removeItem(dataKey);
@@ -48,7 +47,7 @@ export const EditTask = () => {
       });
     } catch (error) {
       console.log(error);
-      Alert.alert("Nao foi editar salvar!");
+      Alert.alert("Nao foi possivel editar!");
     }
   };
 
@@ -90,43 +89,57 @@ export const EditTask = () => {
   }, [route.params]);
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.grey100 }}>
-      <Appbar.Header mode="small" style={{ backgroundColor: colors.blue }}>
-        <Appbar.Action
-          icon="arrow-left"
-          color="#FFF"
-          onPress={() => navigation.goBack()}
-        />
-        <Appbar.Content color="#FFF" title="Editar tarefa" />
-        <Appbar.Action
-          icon="delete"
-          color="#FFF"
-          onPress={() => handleDeleteTask(task)}
-        />
-      </Appbar.Header>
+    <>
+      <View style={{ flex: 1, backgroundColor: colors.grey100 }}>
+        <Appbar.Header mode="small" style={{ backgroundColor: colors.blue }}>
+          <Appbar.Action
+            icon="arrow-left"
+            color="#FFF"
+            onPress={() => navigation.goBack()}
+          />
+          <Appbar.Content color="#FFF" title="Editar tarefa" />
+          <Appbar.Action
+            icon="delete"
+            color="#FFF"
+            onPress={() => setIsModalVisible(true)}
+          />
+        </Appbar.Header>
 
-      <View style={{ flex: 1, padding: 20 }}>
-        <Text style={s.title}>Titulo</Text>
-        <TextInput
-          value={title}
-          onChangeText={(txt) => setTitle(txt)}
-          style={{ ...s.textinput, fontSize: 22 }}
-          maxLength={50}
-        />
+        <View style={{ flex: 1, padding: 20 }}>
+          <Text style={s.title}>Titulo</Text>
+          <TextInput
+            value={title}
+            onChangeText={(txt) => setTitle(txt)}
+            style={{ ...s.textinput, fontSize: 22 }}
+            maxLength={50}
+          />
 
-        <Text style={s.title}>Descricao</Text>
-        <TextInput
-          value={desc}
-          onChangeText={(txt) => setDesc(txt)}
-          style={{ ...s.textinput, fontSize: 14 }}
-          multiline
-        />
+          <Text style={s.title}>Descricao</Text>
+          <TextInput
+            value={desc}
+            onChangeText={(txt) => setDesc(txt)}
+            style={{ ...s.textinput, fontSize: 14 }}
+            multiline
+          />
 
-        <Text>Data e hora de conclusao</Text>
+          <Text>Data e hora de conclusao</Text>
+        </View>
+
+        <CircleButton icon="check" onPress={() => handleEditTask(task)} />
       </View>
 
-      <CircleButton icon="check" onPress={() => handleEditTask(task)} />
-    </View>
+      <AnimatedCheckModal
+        show={isModalVisible}
+        deleteConfirmation={() => {
+          handleDeleteTask(task);
+          setIsModalVisible(false);
+        }}
+        closeOnPress={() => {
+          setIsModalVisible(false);
+        }}
+        label="Deseja realmente excluir a tarefa?"
+      />
+    </>
   );
 };
 

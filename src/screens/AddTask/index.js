@@ -23,7 +23,6 @@ export const AddTask = () => {
   };
 
   const handleRegisterTask = async () => {
-    console.log("quantas vezes entoru -=============");
     const newTask = {
       id: uuid.v4(),
       title,
