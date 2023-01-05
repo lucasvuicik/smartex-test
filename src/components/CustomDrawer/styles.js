@@ -23,6 +23,24 @@ export const styles = StyleSheet.create({
     color: theme.colors.white,
     fontWeight: theme.bold.bolder,
   },
+  accordionElements: {
+    height: 50, 
+    backgroundColor: theme.colors.grey100,
+  },
+  accordionTitleStyle: {
+    color: theme.colors.blue,
+    fontWeight: theme.bold.medium,
+  },
+  accordionItem: {
+    height: 50,
+    backgroundColor: theme.colors.grey100,
+    color: "white",
+    fontSize: 10,
+
+    fontWeight: "bold",
+    borderBottomWidth: 1,
+    borderBottomColor: theme.colors.grey200,
+  },
   menuElements: {
     flex: 1,
     backgroundColor: "white",
