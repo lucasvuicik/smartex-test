@@ -9,14 +9,14 @@ import { CustomDrawer } from "../components";
 const Drawer = createDrawerNavigator();
 
 export const Routes = () => {
-  const { colors } = useTheme();
+  const { colors, fontSize } = useTheme();
   return (
     <Drawer.Navigator
       drawerContent={(props) => <CustomDrawer {...props} />}
       screenOptions={{
         headerShown: false,
-        drawerStyle: { backgroundColor: "#F1F1F1" },
-        drawerLabelStyle: { marginLeft: -20, fontSize: 16 },
+        drawerStyle: { backgroundColor: colors.grey100 },
+        drawerLabelStyle: { marginLeft: -20, fontSize: fontSize.medium },
         drawerActiveBackgroundColor: colors.blue,
         drawerActiveTintColor: colors.white,
         drawerInactiveTintColor: colors.blue600,
