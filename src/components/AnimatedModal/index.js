@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
-  StyleSheet,
   Animated,
   Dimensions,
   TouchableOpacity,
@@ -13,7 +12,7 @@ import { colors } from "../../global/styles/theme";
 
 const { height } = Dimensions.get("window");
 
-export const AnimatedCheckModal = ({
+export const AnimatedModal = ({
   show,
   label,
   deleteConfirmation,
