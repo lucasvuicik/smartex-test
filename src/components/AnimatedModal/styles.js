@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { colors } from "../../global/styles/theme";
+import { theme } from "../../global/styles/theme";
 
 export const styles = StyleSheet.create({
   container: {
@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     width: "60%",
     padding: 16,
     alignItems: "center",
-    backgroundColor: colors.white,
+    backgroundColor: theme.colors.white,
     borderRadius: 10,
   },
 
@@ -27,9 +27,9 @@ export const styles = StyleSheet.create({
     paddingBottom: 16,
 
     textAlign: "center",
-    fontWeight: "400",
-    fontSize: 14,
-    color: colors.grey600,
+    fontWeight: theme.bold.extraSmall,
+    fontSize: theme.fontSize.medium,
+    color: theme.colors.grey600,
   },
   buttonsContainer: {
     width: "100%",
@@ -46,11 +46,11 @@ export const styles = StyleSheet.create({
 
     borderWidth: 1,
     borderRadius: 4,
-    borderColor: colors.blue,
+    borderColor: theme.colors.blue,
   },
   modalButtonsText: {
     textTransform: "uppercase",
-    fontWeight: "600",
-    fontSize: 14,
+    fontWeight: theme.bold.medium,
+    fontSize: theme.fontSize.medium,
   },
 });

@@ -4,7 +4,7 @@ import { theme } from "../../global/styles/theme";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.grey100,
+    backgroundColor: theme.colors.white,
   },
   contentContainerStyle: {
     backgroundColor: theme.colors.blue600,
@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   },
   userName: {
     color: theme.colors.white,
-    fontWeight: "900",
+    fontWeight: theme.bold.bolder,
   },
   menuElements: {
     flex: 1,
