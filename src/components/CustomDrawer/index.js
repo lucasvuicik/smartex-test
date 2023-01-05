@@ -6,24 +6,32 @@ import {
   DrawerItemList,
 } from "@react-navigation/drawer";
 
+import { styles as s } from "./styles";
+
 export const CustomDrawer = (props) => {
+  const pkg = require("../../../package.json");
+
   return (
-    <View style={{ flex: 1 }}>
+    <View style={s.container}>
       <DrawerContentScrollView
         {...props}
-        contentContainerStyle={{ backgroundColor: "#f1f1f1" }}
+        contentContainerStyle={s.contentContainerStyle}
       >
-        <View style={{ backgroundColor: "purple" }}>
+        <View style={s.userElements}>
           <Image
             source={require("../../assets/user-profile-picture.jpg")}
-            style={{ width: 80, height: 80, borderRadius: 40 }}
+            style={s.userImage}
           />
+          <Text style={s.userName}>Lucas Vuicik</Text>
         </View>
-        <DrawerItemList {...props} />
+
+        <View style={s.menuElements}>
+          <DrawerItemList {...props} />
+        </View>
       </DrawerContentScrollView>
 
-      <View>
-        <Text>LUCAS</Text>
+      <View style={s.extraInfoElements}>
+        <Text style={s.extraInfoText}>System version: {pkg.version}</Text>
       </View>
     </View>
   );
