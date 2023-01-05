@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { Appbar, Checkbox, useTheme } from "react-native-paper";
+import { Appbar, Avatar, Checkbox, useTheme } from "react-native-paper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { CircleButton } from "../../components";
@@ -49,8 +49,12 @@ export const TasksList = () => {
           color={colors.orange}
         />
         <View style={s.rowRightElements}>
-          <Text style={s.rowTitle}>{title}</Text>
-          <Text style={s.rowDesc}>{desc}</Text>
+          <Text numberOfLines={1} ellipsizeMode="tail" style={s.rowTitle}>
+            {title}
+          </Text>
+          <Text numberOfLines={1} ellipsizeMode="tail" style={s.rowDesc}>
+            {desc}
+          </Text>
           <Text style={s.rowDate}>{date}</Text>
         </View>
       </TouchableOpacity>
@@ -105,8 +109,15 @@ export const TasksList = () => {
             )}
           />
         ) : (
-          // colocar Avatar do paper
-          <Text>Voce nao possui registros</Text>
+          <View style={s.emptyScreenContainer}>
+            <Avatar.Icon
+              size={60}
+              icon="exclamation"
+              color={colors.white}
+              style={s.emptyScreenIcon}
+            />
+            <Text style={s.emptyScreenText}>Você não possui registros</Text>
+          </View>
         )}
       </View>
 
