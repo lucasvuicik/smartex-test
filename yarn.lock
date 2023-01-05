@@ -2249,6 +2249,13 @@
     sudo-prompt "^9.0.0"
     wcwidth "^1.0.1"
 
+"@react-native-community/datetimepicker@6.1.4":
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-6.1.4.tgz#f4f04e3f2c7229980b68abb8bf3e8440c4231ed4"
+  integrity sha512-0QLUt1FZbK1YACutZ4RQbCg6riXd5S2wq9rfOl2fO8zmvAqNu8ENlp1KzIc12KDBWgakz9LpiOFWawl4dQ1HGg==
+  dependencies:
+    invariant "^2.2.4"
+
 "@react-native-material/core@^1.3.7":
   version "1.3.7"
   resolved "https://registry.yarnpkg.com/@react-native-material/core/-/core-1.3.7.tgz#8233a3681b3ba046a400493daa0878aa3c0bf04a"
@@ -6385,7 +6392,7 @@ prompts@^2.3.2, prompts@^2.4.0:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@*, prop-types@^15.8.1:
+prop-types@*:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -6512,13 +6519,6 @@ react-native-codegen@^0.0.17:
     flow-parser "^0.121.0"
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
-
-react-native-date-picker@^4.2.6:
-  version "4.2.6"
-  resolved "https://registry.yarnpkg.com/react-native-date-picker/-/react-native-date-picker-4.2.6.tgz#3fb118c141401dcdebb3472ee1c69a0c1c8ff612"
-  integrity sha512-qnSLefvCInFp1etQ27AsDzpCJgvi0Q0eIYRtIzjBp5WC5hzINIY7WWeQESAA/QUPbwFJU7Vk06ouQc51dC1Qaw==
-  dependencies:
-    prop-types "^15.8.1"
 
 react-native-flex-layout@^0.1.5:
   version "0.1.5"
