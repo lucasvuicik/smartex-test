@@ -22,7 +22,7 @@ export const AddTask = () => {
   const dataKey = "@smartex-test-app:tasks";
 
   const navigation = useNavigation();
-  const { colors } = useTheme();
+  const { colors, fontSize } = useTheme();
 
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -79,7 +79,7 @@ export const AddTask = () => {
             label="Titulo"
             value={title}
             onChangeText={(txt) => setTitle(txt)}
-            style={{ fontSize: 32 }}
+            style={{ fontSize: fontSize.extraBig }}
             maxLength={50}
           />
 
@@ -87,7 +87,7 @@ export const AddTask = () => {
             label="Descricao"
             value={desc}
             onChangeText={(txt) => setDesc(txt)}
-            style={{ fontSize: 18 }}
+            style={{ fontSize: fontSize.extraMedium }}
             multiline={true}
           />
 
