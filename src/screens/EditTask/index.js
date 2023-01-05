@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Platform,
+  Text,
+  TextInput,
+  View,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { Appbar } from "react-native-paper";
+import { Appbar, useTheme } from "react-native-paper";
 
-import { CircleButton } from "../../components";
-import { colors } from "../../global/styles/theme";
-import { AnimatedCheckModal } from "../../components/AnimatedModal";
+import { AnimatedModal, CircleButton, CustomTextInput } from "../../components";
+import { styles as s } from "./styles";
 
 export const EditTask = () => {
   const dataKey = "@smartex-test-app:tasks";
 
   const navigation = useNavigation();
   const route = useRoute();
+  const { colors } = useTheme();
 
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -89,8 +97,11 @@ export const EditTask = () => {
   }, [route.params]);
 
   return (
-    <>
-      <View style={{ flex: 1, backgroundColor: colors.grey100 }}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={s.container}
+      >
         <Appbar.Header mode="small" style={{ backgroundColor: colors.blue }}>
           <Appbar.Action
             icon="arrow-left"
@@ -105,57 +116,40 @@ export const EditTask = () => {
           />
         </Appbar.Header>
 
-        <View style={{ flex: 1, padding: 20 }}>
-          <Text style={s.title}>Titulo</Text>
-          <TextInput
+        <View style={s.elementsContainer}>
+          <CustomTextInput
+            label="Titulo"
             value={title}
             onChangeText={(txt) => setTitle(txt)}
-            style={{ ...s.textinput, fontSize: 22 }}
+            style={{ fontSize: 20 }}
             maxLength={50}
           />
 
-          <Text style={s.title}>Descricao</Text>
-          <TextInput
+          <CustomTextInput
+            label="Descricao"
             value={desc}
             onChangeText={(txt) => setDesc(txt)}
-            style={{ ...s.textinput, fontSize: 14 }}
-            multiline
+            style={{ fontSize: 14 }}
+            multiline={true}
           />
 
           <Text>Data e hora de conclusao</Text>
         </View>
 
         <CircleButton icon="check" onPress={() => handleEditTask(task)} />
-      </View>
 
-      <AnimatedCheckModal
-        show={isModalVisible}
-        deleteConfirmation={() => {
-          handleDeleteTask(task);
-          setIsModalVisible(false);
-        }}
-        closeOnPress={() => {
-          setIsModalVisible(false);
-        }}
-        label="Deseja realmente excluir a tarefa?"
-      />
-    </>
+        <AnimatedModal
+          show={isModalVisible}
+          deleteConfirmation={() => {
+            handleDeleteTask(task);
+            setIsModalVisible(false);
+          }}
+          closeOnPress={() => {
+            setIsModalVisible(false);
+          }}
+          label="Deseja realmente excluir a tarefa?"
+        />
+      </KeyboardAvoidingView>
+    </TouchableWithoutFeedback>
   );
 };
-
-const s = StyleSheet.create({
-  title: {
-    marginBottom: 10,
-    fontSize: 14,
-    fontWeight: "600",
-    color: colors.blue,
-  },
-  textinput: {
-    marginBottom: 20,
-    width: "100%",
-    paddingVertical: 10,
-    borderBottomWidth: 2,
-    borderBottomColor: colors.grey300,
-    color: colors.grey600,
-  },
-});
