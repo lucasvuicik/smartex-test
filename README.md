@@ -6,7 +6,7 @@ Smartex Test App
 
 ## 🎨 Telas
 
-<img src="marvel-heroes-app.gif" alt="marvel-heroes-app">
+<img width="250px" src="telas.gif" alt="telas-do-app">
 
 ## 📃 Sobre o projeto
 
