@@ -3,12 +3,9 @@ import {
   KeyboardAvoidingView,
   Platform,
   Text,
-  TextInput,
   View,
   TouchableWithoutFeedback,
   Keyboard,
-  TouchableOpacity,
-  Button,
 } from "react-native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -174,7 +171,7 @@ export const EditTask = () => {
               onChange={onChange}
             />
           </View>
-          
+
           <Text style={s.pickerText}>
             {dayNames[date.getDay()]}, {monthNames[date.getMonth()]}{" "}
             {date.getDate()} {date.getFullYear()}
