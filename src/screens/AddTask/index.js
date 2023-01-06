@@ -90,8 +90,6 @@ export const AddTask = () => {
             style={{ fontSize: fontSize.extraMedium }}
             multiline={true}
           />
-
-          <Text style={s.title}>Data e hora de conclusao</Text>
         </View>
 
         <CircleButton

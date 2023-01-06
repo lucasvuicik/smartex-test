@@ -11,7 +11,6 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Appbar, useTheme, Checkbox } from "react-native-paper";
-import DateTimePicker from "@react-native-community/datetimepicker";
 
 import { AnimatedModal, CircleButton, CustomTextInput } from "../../components";
 import { styles as s } from "./styles";
@@ -99,33 +98,6 @@ export const EditTask = () => {
     }
   }, [route.params]);
 
-  const dayNames = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
-
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  const [date, setDate] = useState(new Date());
-  const [mode, setMode] = useState("date");
-  const [show, setShow] = useState(false);
-
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate;
-    setShow(false);
-    setDate(currentDate);
-  };
-
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView
@@ -161,21 +133,6 @@ export const EditTask = () => {
             style={{ fontSize: fontSize.medium }}
             multiline={true}
           />
-
-          <View style={s.pickerContainer}>
-            <DateTimePicker
-              testID="dateTimePicker"
-              value={date}
-              mode={mode}
-              is24Hour={true}
-              onChange={onChange}
-            />
-          </View>
-
-          <Text style={s.pickerText}>
-            {dayNames[date.getDay()]}, {monthNames[date.getMonth()]}{" "}
-            {date.getDate()} {date.getFullYear()}
-          </Text>
 
           <View style={s.checkboxContainer}>
             <Checkbox

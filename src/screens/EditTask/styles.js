@@ -14,19 +14,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
   },
-  pickerContainer: {
-    width: "50%",
-
-    textAlign: "center",
-    // flexDirection: "row",
-    // alignItems: "center",
-    // justifyContent: "space-between",
-
-    backgroundColor: theme.colors.red,
-  },
-  pickerText: {
-    marginTop: 20,
-  },
   checkboxContainer: {
     width: "100%",
 
