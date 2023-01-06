@@ -20,7 +20,7 @@ Aplicativo proposto como desafio pela <a href="https://www.smartex.ai/" target="
 - 🧭 **React navigation (drawer e native-stack)** — Estratégias de navegação
 - 🎨 **Paper Material Design for React Native** — Coleção de components customizaveis que seguem o Material Design da Google
 - 📱 **UUID Generator** — Gerador de chaves únicas aleatórias
-- 💅 **StyleSheet ** — Estilização dos componentes
+- 💅 **StyleSheet** — Estilização dos componentes
 
 ## 🚀 Rodando o projeto
 
